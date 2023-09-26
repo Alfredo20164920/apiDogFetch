@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useAuth } from "../context/auth";
+import AuthContext from "../context/auth";
 import { Navigate } from "react-router-dom";
+import { useContext } from 'react';
 
 interface Props {
   children: any
 }
 
 function PrivateRoute({children}: Props) {
-  const isAuthenticated = useAuth();
+  const {user} = useContext(AuthContext);
 
-  if(!isAuthenticated) {
+  if(!user) {
     return <Navigate to="/login" replace />;
   }
   return children;

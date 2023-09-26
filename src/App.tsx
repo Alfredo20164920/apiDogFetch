@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { Home, Login, Match } from './pages';
-import './App.css'
-
+import "./App.css"
 import PrivateRoute from "./routes/PrivateRoute";
+import { AuthContextProvider } from "./context/auth";
 
 function App() {
 
   return (
+    <AuthContextProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
@@ -30,6 +30,7 @@ function App() {
         />
 
       </Routes>
+    </AuthContextProvider>
   )
 }
 
