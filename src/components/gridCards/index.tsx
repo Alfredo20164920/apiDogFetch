@@ -3,18 +3,11 @@ import { Container } from './styled'
 // import AuthContext from '../../context/auth';
 import { api } from '../../API/index';
 import FilterContext from '../../context/filter';
+import { Dog } from '../../types/index';
+import { Card } from '../../components/card';
 
 export interface IFilterParams {
   breeds?: string[],
-}
-
-export interface Dog {
-  id: string
-  img: string
-  name: string
-  age: number
-  zip_code: string
-  breed: string
 }
 
 const Component = () => {
@@ -33,7 +26,7 @@ const Component = () => {
 
   return (
     <Container>
-      {data.map((item, index: number) => <p key={index}>{item?.breed}</p>)}
+      {data.map((item, index: number) => <Card key={index} data={item}/>)}
     </Container>
   )
 }
