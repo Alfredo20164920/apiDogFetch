@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, ButtonsContainer, Container, FilterContainer, FilterLabel } from "./styled"
+import { Container, FilterContainer, FilterLabel } from "./styled"
 import { useState, useEffect, useRef, useContext } from 'react';
 import { api } from '../../API/index';
-import Select from 'react-select'
+import Select, { MultiValue } from 'react-select'
 import FilterContext from '../../context/filter';
 
 export type BreedsType = {
@@ -13,7 +13,6 @@ export type BreedsType = {
 const Component = () => {
   const { setFilter } = useContext(FilterContext);
   const [breeds, setBreeds] = useState<BreedsType[]>([]);
-  const [filterBreed, setFilterBreed] = useState<string[]>([]);
 
   const selectRef = useRef<any>(null);
 
@@ -29,16 +28,15 @@ const Component = () => {
     })
   }, [])
 
-  const onClear = () => {
-    setFilterBreed([])
-    setFilter({breeds: []})
-    selectRef.current?.clearValue();
+  const selectOptions = (event: MultiValue<BreedsType>) => {
+    if(event.length === 0) {
+      setFilter({breeds: []})
+    }
+    else {
+      event.map(item => setFilter({breeds: [item.label]}))
+    }
   }
 
-  const handleFilter = () => {
-    console.log(filterBreed);
-    setFilter({breeds: filterBreed})
-  }
 
   return (
     <Container>
@@ -52,20 +50,9 @@ const Component = () => {
           isMulti 
           isSearchable 
           isClearable 
-          onChange={e => {e.map(item => setFilterBreed([...filterBreed, item.label]))}}
+          onChange={(ev) => selectOptions(ev)}
         />
-      </FilterContainer>
-
-      <ButtonsContainer>
-    
-        <Button value={"Search"} type="button" onClick={handleFilter} disabled={filterBreed.length === 0 ? true : false}/>
-        {
-          filterBreed.length !== 0 
-            ? <Button value={"Clear filter"} type="button" onClick={onClear}/> 
-            : null
-        }
-      </ButtonsContainer>
-      
+      </FilterContainer>      
     </Container>
   )
 }

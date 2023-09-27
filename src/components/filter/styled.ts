@@ -21,19 +21,3 @@ export const FilterLabel = styled.label`
   font-size: 1em;
   font-weight: bold;
 `;
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 0.4rem;
-`
-
-export const Button = styled.input`
-  padding: 0.2rem 0.5rem;
-  background-color: white;
-  border-radius: 10px;
-  font-size: 1em;
-  color: black;
-  border: 1px solid black
-`
