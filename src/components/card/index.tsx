@@ -1,21 +1,21 @@
-import { useState } from 'react';
 import { Dog } from '../../types/index';
 import { Container, Icon, ImageStyled, MainText, TextLabel } from './styled';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 interface ICardProps {
-  data: Dog
+  data: Dog,
+  favorites: string[]
+  setFavorite: (c: string) => void
 }
 
+const Component = ({data, favorites,setFavorite}: ICardProps) => {
+  const {id, name, age, img, breed} = data;
+  
+  const isFavorite = favorites.includes(id);
 
-const Component = ({data}: ICardProps) => {
-  const {name, age, img, breed} = data;
-
-  const [isFavorite, setIsFavorite] = useState(false)
-
-  const handleIsFavorite = () => {
-    setIsFavorite(!isFavorite);
+  const handleToggleFavorite = () => {
+    setFavorite(id);
   }
 
   return (
@@ -23,7 +23,7 @@ const Component = ({data}: ICardProps) => {
       <ImageStyled src={img}/>
       <MainText>{name} - {age} years</MainText>
       <TextLabel>{breed}</TextLabel>
-      <Icon icon={!isFavorite ? faHeartRegular : faHeartSolid} onClick={handleIsFavorite}/>
+      <Icon icon={!isFavorite ? faHeartRegular : faHeartSolid} onClick={handleToggleFavorite}/>
     </Container>
   )
   
