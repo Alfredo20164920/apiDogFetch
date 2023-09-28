@@ -11,11 +11,13 @@ export type BreedsType = {
 }
 
 const Component = () => {
-  const { setFilter } = useContext(FilterContext);
+  const { setFilter, filterDogs } = useContext(FilterContext);
   const [breeds, setBreeds] = useState<BreedsType[]>([]);
+  const [filterBreeds, setFilterBreeds] = useState<string[]>([])
 
   const selectRef = useRef<any>(null);
 
+  if(typeof filterDogs === 'undefined') setFilter({breeds: [], from: 0})
   useEffect(() => {
     api.get('/dogs/breeds')
     .then(response => {
@@ -30,10 +32,15 @@ const Component = () => {
 
   const selectOptions = (event: MultiValue<BreedsType>) => {
     if(event.length === 0) {
-      setFilter({breeds: []})
+      setFilter({breeds: [], from: 0})
     }
     else {
-      event.map(item => setFilter({breeds: [item.label]}))
+      const label = event.map(item => {
+        setFilterBreeds([...filterBreeds, item.label]);
+        return item.label
+      })
+      console.log(label)
+      setFilter({breeds: label, from: 0})
     }
   }
 
