@@ -5,25 +5,28 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 interface ICardProps {
   data: Dog,
-  favorites: string[]
-  setFavorite: (c: string) => void
+  favorites?: string[]
+  isSingle?: boolean
+  setFavorite?: (c: string) => void
 }
 
-const Component = ({data, favorites,setFavorite}: ICardProps) => {
+const Component = ({data, favorites, isSingle,setFavorite}: ICardProps) => {
   const {id, name, age, img, breed} = data;
   
-  const isFavorite = favorites.includes(id);
+  const isFavorite = favorites?.includes(id);
 
   const handleToggleFavorite = () => {
-    setFavorite(id);
+    setFavorite?.(id);
   }
 
   return (
-    <Container>
+    <Container $isbig={isSingle}>
       <ImageStyled src={img}/>
       <MainText>{name} - {age} years</MainText>
       <TextLabel>{breed}</TextLabel>
-      <Icon icon={!isFavorite ? faHeartRegular : faHeartSolid} onClick={handleToggleFavorite}/>
+      {
+        favorites ? <Icon icon={!isFavorite ? faHeartRegular : faHeartSolid} onClick={handleToggleFavorite}/> : null
+      }
     </Container>
   )
   

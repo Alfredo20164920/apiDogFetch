@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const Container = styled.div`
+interface IContainerProps {
+  $isbig?: boolean
+}
+
+export const Container = styled.div<IContainerProps>`
   background-color: #f2f2f2;
   border-radius: 15px;
-  height: 250px;
+  height: ${props => !props.$isbig ? '250px' : '600px'};
   position: relative;
+  width: 100%;
 `
 
 export const ImageStyled = styled.img`

@@ -3,7 +3,7 @@ import { Container } from './styled'
 import { api } from '../../API/index';
 import FilterContext from '../../context/filter';
 import { Dog } from '../../types/index';
-import { Card, Pagination } from '../../components';
+import { Card, MatchButton, Pagination } from '../../components';
 import { useLocalStorage, LOCAL_STORAGE_KEYS } from '../../hooks/useLocalStorage';
 
 export interface IFilterParams {
@@ -43,6 +43,7 @@ const Component = () => {
   
   return (
     <Container>
+      <MatchButton favoritesCount={storedValue.length}/>
       {data.map((item, index: number) => <Card key={index} data={item} setFavorite={saveFavorite} favorites={storedValue} />)}
       <Pagination />
     </Container>
