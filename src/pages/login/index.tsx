@@ -1,5 +1,4 @@
-import { AuthForm } from '../components/authForm'
-import React from 'react'
+import { AuthForm } from '../../components/authForm'
 
 const Component = () => {
   return (

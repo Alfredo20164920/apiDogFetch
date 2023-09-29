@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container, FilterContainer, FilterLabel } from "./styled"
 import { useState, useEffect, useRef, useContext } from 'react';
 import { api } from '../../API/index';
@@ -9,13 +8,12 @@ export type BreedsType = {
   value: string,
   label: string
 }
-
 const Component = () => {
   const { setFilter, filterDogs } = useContext(FilterContext);
   const [breeds, setBreeds] = useState<BreedsType[]>([]);
   const [filterBreeds, setFilterBreeds] = useState<string[]>([])
 
-  const selectRef = useRef<any>(null);
+  const selectRef = useRef<HTMLSelectElement>(null);
 
   if(typeof filterDogs === 'undefined') setFilter({breeds: [], from: 0})
   useEffect(() => {
