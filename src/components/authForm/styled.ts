@@ -68,6 +68,12 @@ export const Submit = styled(InputStyled)`
     background-color: #023E8A;
     color: white;
   } 
+`
 
-  
+export const Error = styled.p`
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  color: #cc0000;
+  font-weight: 500;
+
 `

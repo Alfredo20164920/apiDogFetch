@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: right;
   align-items: center;
+  gap: 1.6rem;
 `
 
 export const Button = styled.input`
@@ -23,4 +24,13 @@ export const Button = styled.input`
     color: white;
     border: 1px solid #fff;
   }
+`
+export const Error = styled.p`
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  color: #cc0000;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+
 `
