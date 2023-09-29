@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   grid-area: nav;
-  background-color: brown;
+  background-color: #ADE8F4;
 
   display: flex;
   flex-direction: row;
@@ -13,21 +13,22 @@ export const Container = styled.header`
 
 export const ButtonLogOut = styled.input`
   font-size: 1em;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 10px;
-  border: 1px solid black;
-  background-color: white;
+  border: none;
+  background-color: #fff;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
 
   &:hover{
-    background-color: aqua;
-
+    background-color: #0077B6;
+    color: white;
   }
 `
 
 export const UserText = styled.p`
-  font-size: 1.2em;
+  font-size: 1.8em;
   font-weight: bold;
+  color: #003049;
 `

@@ -9,10 +9,18 @@ export const Container = styled.section`
 `
 
 export const Button = styled.input`
-  padding: 1rem 2rem;
-  border: 1px solid black;
+  font-size: 1em;
+  padding: 1rem 3rem;
   border-radius: 10px;
-  font-size: 16px;
+  border: 1px solid #003049;
+  background-color: #fff;
+  text-align: center;
   font-weight: bold;
   cursor: pointer;
+
+  &:hover{
+    background-color: #0077B6;
+    color: white;
+    border: 1px solid #fff;
+  }
 `

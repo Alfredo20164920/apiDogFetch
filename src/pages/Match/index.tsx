@@ -36,7 +36,7 @@ const Component = () => {
     <Container>
       <h2>You match with this dog</h2>
       <Card data={dog} isSingle={true} />
-      <Button type='button' value={'Try again'} onClick={handleTryAgain}/>
+      <Button type='button' value={'Search others dogs'} onClick={handleTryAgain}/>
     </Container>
   )
 }
