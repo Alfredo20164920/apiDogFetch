@@ -1,5 +1,5 @@
 import { Dog } from '../../types/index';
-import { Container, Icon, ImageStyled, MainText, TextLabel } from './styled';
+import { Container, Icon, ImageStyled, MainText, SubText, TextLabel } from './styled';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +11,7 @@ interface ICardProps {
 }
 
 const Component = ({data, favorites, isSingle,setFavorite}: ICardProps) => {
-  const {id, name, age, img, breed} = data;
+  const {id, name, age, img, breed, zip_code} = data;
   
   const isFavorite = favorites?.includes(id);
 
@@ -24,6 +24,7 @@ const Component = ({data, favorites, isSingle,setFavorite}: ICardProps) => {
       <ImageStyled src={img}/>
       <MainText>{name} - {age} years</MainText>
       <TextLabel>{breed}</TextLabel>
+      <SubText>Zip code: {zip_code}</SubText>
       {
         favorites ? <Icon icon={!isFavorite ? faHeartRegular : faHeartSolid} onClick={handleToggleFavorite}/> : null
       }

@@ -6,9 +6,10 @@ export const Container = styled.div`
   width: 40%;
   height: 60vh;
   min-height: 500px;
-  background-color: #0101;
+  background-color: #0096C7;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
 
   @media (max-width: 1200px){
     width: 60%;
@@ -37,29 +38,36 @@ export const InputContainer = styled.div`
 
 export const Caption = styled.label`
   font-size: 1.6rem;
-  color: #000;
+  color: #fff;
 `
 
 export const InputStyled = styled.input`
   padding: 0.8rem;
   width: 90%;
-  border: 1px solid #000;
   border-radius: 10px;
+  font-size: 1em;
+  border: none;
+
+
   @media (max-width: 700px){
     width: 90%;
   }
 `
 
 export const Submit = styled(InputStyled)`
-  background-color: aliceblue;
   padding: 0.5rem;
-  border: 1px solid #000;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: bold;
   width: 90%;
   align-self: center;
+  background-color: #fff;
   cursor: pointer;
+
+  &:hover{
+    background-color: #023E8A;
+    color: white;
+  } 
 
   
 `

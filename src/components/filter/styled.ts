@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.aside`
-  background-color: beige;
+  /* background-color: beige; */
   grid-area: filter;
   display: flex;
   flex-direction: column;

@@ -6,15 +6,15 @@
   cursor: pointer;
   width: 40px;
   color: #000;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 
 .disabled-page {
-  color: #808e9b;
+  color: #a8abad;
 }
 
 .active {
-  color: blue;
+  color: #0077B6;
   height: 100%;
   text-decoration: underline;
 }
@@ -36,5 +36,5 @@
 }
 
 .pagination-page {
-  font-weight: 500;
+  font-weight: bold;
 }
