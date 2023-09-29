@@ -1,20 +1,26 @@
 import { useNavigate } from "react-router"
-import { Button, Container } from "./styled"
+import { Button, Container, Error } from "./styled"
+import { useState } from 'react';
 
 interface IMatchProps {
   favoritesCount: number
 }
 
 const Component = ({favoritesCount}: IMatchProps) => {
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
   const handleRedirect = () => {
-    if(favoritesCount < 2) alert('Error');
-    else navigate('/match');
+    if(favoritesCount < 4) setError(true);
+    else{
+      setError(false)
+      navigate('/match');
+    }
   }
 
   return (
     <Container>
+      {error ? <Error>You need to choose 4 dogs or more</Error> : null}
       <Button type="button" value={"Match dog"} onClick={handleRedirect}/>
     </Container>
   )
