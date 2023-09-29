@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import AuthContext from "../context/auth";
 import { Navigate } from "react-router-dom";
 import { useContext } from 'react';
 
 interface Props {
-  children: any
+  children: JSX.Element
 }
 
 function PrivateRoute({children}: Props) {

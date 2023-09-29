@@ -18,7 +18,6 @@ export interface FilterQuery {
 export const FilterContext = createContext<IFilterCtx>({filterDogs: [], totalDogs: 0,filters: {} ,setFilter: () => {}});
 
 export const FilterContextProvider = ({children} :any) => {
-  // const { filterDogs } = useContext(FilterContext);
   const [dogsIds, setDogsIds] = useState<DataProp>({})
   const [filterOptions, setFilterOptions] = useState<FilterQuery>();
 
