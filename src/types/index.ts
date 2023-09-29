@@ -3,8 +3,14 @@ export interface ILogin {
   email: string
 }
 
+export interface IDataStorage {
+  status: string,
+  username: string,
+  createAt: Date,
+}
+
 export interface IAuthContext {
-  user: null | object,
+  user: null | IDataStorage,
   login: (payload: ILogin) => void
   logout: () => void
 }

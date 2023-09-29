@@ -8,11 +8,11 @@ interface Props {
 
 function PrivateRoute({children}: Props) {
   const {user} = useContext(AuthContext);
-
-  if(!user) {
+  if(!user?.username) {
     return <Navigate to="/login" replace />;
+  } else {
+    return children;
   }
-  return children;
 }
 
 export default PrivateRoute;

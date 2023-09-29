@@ -6,6 +6,8 @@ import { IAuthContext, ILogin } from '../types/index';
 import { api } from '../API/index';
 import { useLocalStorage, LOCAL_STORAGE_KEYS } from '../hooks/useLocalStorage';
 
+
+
 export const AuthContext = createContext<IAuthContext>({user: null, login: () => {}, logout: () => {}});
 
 export const AuthContextProvider = ({children}: any) => {
@@ -15,7 +17,7 @@ export const AuthContextProvider = ({children}: any) => {
 
   const login = async (payload: ILogin) => {
     const storage = {
-      200: 'ok',
+      status: 'ok',
       username: payload.name,
       createAt: new Date()
     };
