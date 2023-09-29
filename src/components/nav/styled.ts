@@ -26,3 +26,8 @@ export const ButtonLogOut = styled.input`
 
   }
 `
+
+export const UserText = styled.p`
+  font-size: 1.2em;
+  font-weight: bold;
+`

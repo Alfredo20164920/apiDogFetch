@@ -2,13 +2,14 @@
 import { useState } from "react";
 
 export const LOCAL_STORAGE_KEYS = {
-  FAVORITES_DOGS: "FAVORITES_DOGS"
+  FAVORITES_DOGS: "FAVORITES_DOGS",
+  AUTH_PROFILE: "AUTH_PROFILE",
 };
 
 export const useLocalStorage = (
   key: string,
   initialValue: any
-): [any, (any: any) => void] => {
+): [any, (any: any) => void, () => void] => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -28,5 +29,13 @@ export const useLocalStorage = (
     }
   };
 
-  return [storedValue, setValue];
+  const removeStorage = () => {
+    try {
+      window.localStorage.removeItem(key);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return [storedValue, setValue, removeStorage];
 };
