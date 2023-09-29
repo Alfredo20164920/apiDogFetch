@@ -6,7 +6,7 @@ export interface ILogin {
 export interface IDataStorage {
   status: string,
   username: string,
-  createAt: Date,
+  expired: string,
 }
 
 export interface IAuthContext {

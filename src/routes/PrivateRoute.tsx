@@ -8,7 +8,10 @@ interface Props {
 
 function PrivateRoute({children}: Props) {
   const {user} = useContext(AuthContext);
-  if(!user?.username) {
+
+  const current = new Date;
+
+  if(!user?.username ||current.getTime() > Date.parse(user?.expired)) {
     return <Navigate to="/login" replace />;
   } else {
     return children;
