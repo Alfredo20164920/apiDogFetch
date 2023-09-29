@@ -5,14 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { IAuthContext, ILogin } from '../types/index';
 import { api } from '../API/index';
 
-export const AuthContext = createContext<IAuthContext>({user: null, login: () => {}});
+export const AuthContext = createContext<IAuthContext>({user: null, login: () => {}, logout: () => {}});
 
 export const AuthContextProvider = ({children}: any) => {
 
   const [user, setUser] = useState(() => {
     const userProfle = localStorage.getItem("userProfile");
     if (userProfle) {
-      return JSON.parse(userProfle);
+      const res = JSON.parse(userProfle);
+      return res;
     }
     return null;
   });
@@ -20,15 +21,25 @@ export const AuthContextProvider = ({children}: any) => {
   const navigate = useNavigate();
 
   const login = async (payload: ILogin) => {
+    const storage = {
+      200: 'ok',
+      createAt: new Date()
+    };
     await api.post("/auth/login", payload, {withCredentials: true});
-    localStorage.setItem("userProfile", JSON.stringify({200: 'ok'}));
-    setUser({200: 'ok'})
+    localStorage.setItem("userProfile", JSON.stringify(storage));
+    setUser(storage)
     navigate('/');
+  }
+
+  const logout = async () => {
+    await api.post('/auth/logout', null, {withCredentials: true})
+    localStorage.removeItem('userProfile');
+    navigate('/login');
   }
 
   return (
     <>
-      <AuthContext.Provider value={{user, login}}>
+      <AuthContext.Provider value={{user, login, logout}}>
         {children}
       </AuthContext.Provider>
     </>
