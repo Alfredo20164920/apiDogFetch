@@ -6,6 +6,7 @@ export interface ILogin {
 export interface IAuthContext {
   user: null | object,
   login: (payload: ILogin) => void
+  logout: () => void
 }
 
 export interface Dog {
