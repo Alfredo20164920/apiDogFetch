@@ -13,7 +13,7 @@ const Component = () => {
   const [breeds, setBreeds] = useState<BreedsType[]>([]);
   const [filterBreeds, setFilterBreeds] = useState<string[]>([])
 
-  const selectRef = useRef<HTMLSelectElement>(null);
+  const selectRef = useRef(null);
 
   if(typeof filterDogs === 'undefined') setFilter({breeds: [], from: 0})
   useEffect(() => {
