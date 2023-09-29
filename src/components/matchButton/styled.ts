@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column-end: -1;
   display: flex;
   justify-content: right;
   align-items: center;
